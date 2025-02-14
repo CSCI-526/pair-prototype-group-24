@@ -25,3 +25,7 @@
 ### UI Canvas
 
 - UI/MainUIController.cs
+
+### Background
+
+- View/ParallaxLayer.cs
