@@ -1,5 +1,12 @@
 # Unity-Template
 
+## Dependency
+
+In order to prevent compile errors:
+- Go to Window > Package Manager in the menubar.
+- Select Unity Register in the top-left dropdown list, install Cinemachine.
+- Restart Unity Editor.
+
 ## How to attach
 
 ### Player
