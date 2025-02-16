@@ -1,3 +1,4 @@
+using UnityEngine;
 using Platformer.Core;
 using Platformer.Mechanics;
 using static Platformer.Core.Simulation;
@@ -15,6 +16,7 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
+            Debug.Log("HealthIsZero event triggered");
             Schedule<PlayerDeath>();
         }
     }

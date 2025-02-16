@@ -35,7 +35,8 @@ namespace Platformer.Mechanics
             _renderer = GetComponent<SpriteRenderer>();
             if (randomAnimationStartTime)
                 frame = Random.Range(0, sprites.Length);
-            sprites = idleAnimation;
+            //sprites = idleAnimation;
+            sprites = new Sprite[] { _renderer.sprite };
         }
 
         void OnTriggerEnter2D(Collider2D other)
@@ -50,7 +51,7 @@ namespace Platformer.Mechanics
             if (collected) return;
             //disable the gameObject and remove it from the controller update list.
             frame = 0;
-            sprites = collectedAnimation;
+            //sprites = collectedAnimation;
             if (controller != null)
                 collected = true;
             //send an event into the gameplay system to perform some behaviour.

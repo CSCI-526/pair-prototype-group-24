@@ -16,10 +16,17 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
+            Debug.Log("PlayerDeath event executing...");
             var player = model.player;
+            Debug.Log("Assigned player: " + player);
+            Debug.Log("Checking player object: " + player);
+            Debug.Log("Checking player.health: " + (player.health != null ? "Exists" : "NULL"));
+            Debug.Log("player.health.IsAlive: " + player.health.IsAlive);
             if (player.health.IsAlive)
             {
+                Debug.Log("Calling player.health.Die() now...");
                 player.health.Die();
+                Debug.Log("player.health.Die() call finished");
                 model.virtualCamera.m_Follow = null;
                 model.virtualCamera.m_LookAt = null;
                 // player.collider.enabled = false;
@@ -30,6 +37,7 @@ namespace Platformer.Gameplay
                 player.animator.SetTrigger("hurt");
                 player.animator.SetBool("dead", true);
                 Simulation.Schedule<PlayerSpawn>(2);
+                Debug.Log("PlayerSpawn simulation scheduled");
             }
         }
     }

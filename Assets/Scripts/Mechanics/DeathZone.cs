@@ -14,11 +14,13 @@ namespace Platformer.Mechanics
     {
         void OnTriggerEnter2D(Collider2D collider)
         {
+            Debug.Log("Collision with: " + collider.gameObject.name);
             var p = collider.gameObject.GetComponent<PlayerController>();
             if (p != null)
             {
                 var ev = Schedule<PlayerEnteredDeathZone>();
                 ev.deathzone = this;
+                Debug.Log("PlayerEnteredDeathZone event scheduled");
             }
         }
     }

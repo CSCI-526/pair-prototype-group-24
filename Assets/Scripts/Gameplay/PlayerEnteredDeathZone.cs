@@ -1,3 +1,4 @@
+using UnityEngine;
 using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
@@ -16,7 +17,9 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
-            Simulation.Schedule<PlayerDeath>(0);
+            var ev = Simulation.Schedule<PlayerDeath>(0);
+            Debug.Log("PlayerDeath event details: " + ev);
+            Debug.Log("PlayerDeath simulation scheduled");
         }
     }
 }

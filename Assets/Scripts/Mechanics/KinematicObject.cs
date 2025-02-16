@@ -104,6 +104,7 @@ namespace Platformer.Mechanics
 
         protected virtual void FixedUpdate()
         {
+            velocity = targetVelocity;
             //if already falling, fall faster than the jump speed, otherwise use normal gravity.
             if (Vector2.Dot(velocity, -gravityDirection) < 0)
                 velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;

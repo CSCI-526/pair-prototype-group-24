@@ -53,7 +53,7 @@ namespace Platformer.Mechanics
                         token._renderer.sprite = token.sprites[token.frame];
                         if (token.collected && token.frame == token.sprites.Length - 1)
                         {
-                            token.gameObject.SetActive(false);
+                            token.gameObject.SetActive(false);  //hides the token
                             tokens[i] = null;
                         }
                         else

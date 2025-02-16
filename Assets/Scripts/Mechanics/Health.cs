@@ -39,6 +39,7 @@ namespace Platformer.Mechanics
             currentHP = Mathf.Clamp(currentHP - 1, 0, maxHP);
             if (currentHP == 0)
             {
+                Debug.Log("Scheduling HealthIsZero event");
                 var ev = Schedule<HealthIsZero>();
                 ev.health = this;
             }
@@ -49,12 +50,14 @@ namespace Platformer.Mechanics
         /// </summary>
         public void Die()
         {
+            Debug.Log("Player Died");
             while (currentHP > 0) Decrement();
         }
 
         void Awake()
         {
             currentHP = maxHP;
+            Debug.Log("Health initialized with HP: " + currentHP);
         }
     }
 }

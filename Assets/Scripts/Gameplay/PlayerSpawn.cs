@@ -1,3 +1,4 @@
+using UnityEngine;
 using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
@@ -13,6 +14,7 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
+            Debug.Log("PlayerSpawn event executed");
             var player = model.player;
             player.collider2d.enabled = true;
             player.controlEnabled = false;
@@ -20,6 +22,7 @@ namespace Platformer.Gameplay
                 player.audioSource.PlayOneShot(player.respawnAudio);
             player.health.Increment();
             player.Teleport(model.spawnPoint.transform.position);
+            Debug.Log("Teleporting player to spawn point: " + model.spawnPoint.transform.position);
             player.jumpState = PlayerController.JumpState.Grounded;
             player.animator.SetBool("dead", false);
             model.virtualCamera.m_Follow = player.transform;
