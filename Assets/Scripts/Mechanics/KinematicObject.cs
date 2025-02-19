@@ -42,26 +42,6 @@ namespace Platformer.Mechanics
         protected const float minMoveDistance = 0.001f;
         protected const float shellRadius = 0.01f;
 
-
-        /// <summary>
-        /// Bounce the object's vertical velocity.
-        /// </summary>
-        /// <param name="value"></param>
-        public void Bounce(float value)
-        {
-            velocity.y = value;
-        }
-
-        /// <summary>
-        /// Bounce the objects velocity in a direction.
-        /// </summary>
-        /// <param name="dir"></param>
-        public void Bounce(Vector2 dir)
-        {
-            velocity.y = dir.y;
-            velocity.x = dir.x;
-        }
-
         /// <summary>
         /// Teleport to some position.
         /// </summary>
@@ -104,14 +84,18 @@ namespace Platformer.Mechanics
 
         protected virtual void FixedUpdate()
         {
-            velocity = targetVelocity;
+            Debug.Log("targetVelocity: " + targetVelocity);
+            Debug.Log("velocity: " + velocity);
+            Debug.Log("groundNormal: " + groundNormal);
+            //velocity.x = targetVelocity.x;
+            //convertAxes(velocity);
             //if already falling, fall faster than the jump speed, otherwise use normal gravity.
             if (Vector2.Dot(velocity, -gravityDirection) < 0)
                 velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
             else
                 velocity += Physics2D.gravity * Time.deltaTime;
 
-            //velocity.x = targetVelocity.x;
+            velocity.x = targetVelocity.x;
 
             IsGrounded = false;  //ensure ground detection happens every frame
 
@@ -188,5 +172,19 @@ namespace Platformer.Mechanics
             Physics2D.gravity = newGravityDirection * 9.8f;
         }
 
+        //convert velocity vector from conventional (x, y) to (tangent, normal)
+        //based on the slope of current surface
+        private void convertAxes(Vector2 velocity) 
+        {
+            float a = targetVelocity.magnitude;
+            float b = velocity.y;
+            float tang = groundNormal.x;
+            float norm = groundNormal.y;
+            
+            float sqrtSum = tang * tang + norm * norm;
+
+            velocity.x = (a * norm + b * tang) / sqrtSum;
+            velocity.y = (b * norm - a * tang) / sqrtSum;
+        }
     }
 }
