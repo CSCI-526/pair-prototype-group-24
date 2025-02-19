@@ -50,6 +50,7 @@ namespace Platformer.Mechanics
         /*internal new*/ public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
+        public bool canShiftGravity = true;
 
         bool jump;
         Vector2 move;
@@ -164,6 +165,15 @@ namespace Platformer.Mechanics
 
             Debug.Log("ComputeVelocity - move.x: " + move.x);
             targetVelocity = move * maxSpeed;
+        }
+
+        public void SetGravityShift(bool canShift)
+        {
+            canShiftGravity = canShift;
+            if (!canShift)
+            {
+                ShiftGravity(Vector2.down);
+            }
         }
     }
 }
