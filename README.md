@@ -4,11 +4,11 @@
 
 ## Team Members
 
-| Name | Email | GitHub Username |
-| :---- | :---- | :---- |
-| Shujie Chen | chenshuj@usc.edu | shujiejune |
-| Zixuan Xu | zxu79231@usc.edu | hobb8t |
-| Deep Shah | dbshah@usc.edu | deepshah08 |
+| Name | GitHub Username |
+| :---- | :---- |
+| Shujie Chen | shujiejune |
+| Zixuan Xu | hobb8t |
+| Deep Shah | deepshah08 |
 
 ## Logline
 
